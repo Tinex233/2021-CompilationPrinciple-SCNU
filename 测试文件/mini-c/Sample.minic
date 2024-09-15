@@ -1,0 +1,35 @@
+// Program to calculate the factorial of a number and check some conditions
+
+// Variable definitions
+int number;
+double result;
+float arr[10];
+
+// Function to calculate factorial
+int factorial( int n,int a[ ] ) {
+    int _ts01a;
+    _ts01a = 3.14;
+    a=arr;
+    if(a[0]!=3.2){
+        a[0]=5%1;
+}
+     do{
+        _ts01a = result * n;
+        n = n - 1;
+    } while (n > 1);
+    return _ts01a;
+}
+
+// Main function
+int main( void ) {
+    number = 5;
+    result = factorial(number);
+    arr[1]=arr[3/(1+2)];
+
+    // Print factorial result
+    if (result == 100) {
+        return 1;
+    } else {
+        return 1.234;
+    } 
+}

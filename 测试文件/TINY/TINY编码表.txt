@@ -1,0 +1,27 @@
+Encoding Table[
+  else 102
+  end 103
+  if 100
+  read 106
+  repeat 104
+  then 101
+  until 105
+  write 107
+  identifier 108*
+  number 109*
+  LETTER 110*
+  DIGIT 111*
+  = 112
+  < 113
+  <= 114
+  <> 115
+  >= 116
+  > 117
+  + 118
+  - 119
+  * 120
+  / 121
+  % 122
+  := 123
+  ; 124
+]

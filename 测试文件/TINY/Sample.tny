@@ -1,0 +1,25 @@
+{  Sample program
+   in Tiny language
+}
+read x ; { input an integer }
+if 0 < x then 
+	fact := 1;
+	repeat
+		fact := fact * x;
+		x := x - 1
+	until x = 0;
+	write fact { output factorial of x }
+end;
+READ abc;
+if abc<>x then
+	y := 123;
+	abc := x % y
+else
+	abc := y / x
+end;
+if abc < y THEN
+	WRITE abc
+end;
+if abc > y then
+	write y
+end

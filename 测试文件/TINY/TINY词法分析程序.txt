@@ -1,0 +1,1408 @@
+#include<iostream>
+#include<map>
+#include<string>
+#define NumOfRegex 17
+#define NumOfComment 1
+using namespace std;
+bool CaseSensitive=true;
+int (*regex[NumOfRegex])(string &,int,int);
+int (*lcomment[NumOfComment])(string &,int,int);
+int (*rcomment[NumOfComment])(string &,int,int);
+string regexName[NumOfRegex];
+int REXCodeTable[NumOfRegex];
+map<string,int> KWCodeTable;
+bool expl[NumOfRegex];
+int LC0(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case '{':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int RC0(string &pro,int l,int r)
+{
+	while(l<r)
+	{
+		int state=1;
+		int acpos=l;
+		while((state==1))
+		{
+		char trans=pro[l++];
+			switch(state)
+			{
+			case 1:
+				switch(trans)
+				{
+				case '}':
+					state=2;
+					break;
+				default:
+					state=-1;
+					break;
+				}
+				break;
+			default:
+				state=-1;
+				break;
+			}
+
+			if(state==2)
+				return l;
+		}
+		l++;
+	}
+	return -1;
+}
+int F0(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1||state==2)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case 'A':
+				state=2;
+				break;
+			case 'B':
+				state=2;
+				break;
+			case 'C':
+				state=2;
+				break;
+			case 'D':
+				state=2;
+				break;
+			case 'E':
+				state=2;
+				break;
+			case 'F':
+				state=2;
+				break;
+			case 'G':
+				state=2;
+				break;
+			case 'H':
+				state=2;
+				break;
+			case 'I':
+				state=2;
+				break;
+			case 'J':
+				state=2;
+				break;
+			case 'K':
+				state=2;
+				break;
+			case 'L':
+				state=2;
+				break;
+			case 'M':
+				state=2;
+				break;
+			case 'N':
+				state=2;
+				break;
+			case 'O':
+				state=2;
+				break;
+			case 'P':
+				state=2;
+				break;
+			case 'Q':
+				state=2;
+				break;
+			case 'R':
+				state=2;
+				break;
+			case 'S':
+				state=2;
+				break;
+			case 'T':
+				state=2;
+				break;
+			case 'U':
+				state=2;
+				break;
+			case 'V':
+				state=2;
+				break;
+			case 'W':
+				state=2;
+				break;
+			case 'X':
+				state=2;
+				break;
+			case 'Y':
+				state=2;
+				break;
+			case 'Z':
+				state=2;
+				break;
+			case 'a':
+				state=2;
+				break;
+			case 'b':
+				state=2;
+				break;
+			case 'c':
+				state=2;
+				break;
+			case 'd':
+				state=2;
+				break;
+			case 'e':
+				state=2;
+				break;
+			case 'f':
+				state=2;
+				break;
+			case 'g':
+				state=2;
+				break;
+			case 'h':
+				state=2;
+				break;
+			case 'i':
+				state=2;
+				break;
+			case 'j':
+				state=2;
+				break;
+			case 'k':
+				state=2;
+				break;
+			case 'l':
+				state=2;
+				break;
+			case 'm':
+				state=2;
+				break;
+			case 'n':
+				state=2;
+				break;
+			case 'o':
+				state=2;
+				break;
+			case 'p':
+				state=2;
+				break;
+			case 'q':
+				state=2;
+				break;
+			case 'r':
+				state=2;
+				break;
+			case 's':
+				state=2;
+				break;
+			case 't':
+				state=2;
+				break;
+			case 'u':
+				state=2;
+				break;
+			case 'v':
+				state=2;
+				break;
+			case 'w':
+				state=2;
+				break;
+			case 'x':
+				state=2;
+				break;
+			case 'y':
+				state=2;
+				break;
+			case 'z':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		case 2:
+			switch(trans)
+			{
+			case '0':
+				state=2;
+				break;
+			case '1':
+				state=2;
+				break;
+			case '2':
+				state=2;
+				break;
+			case '3':
+				state=2;
+				break;
+			case '4':
+				state=2;
+				break;
+			case '5':
+				state=2;
+				break;
+			case '6':
+				state=2;
+				break;
+			case '7':
+				state=2;
+				break;
+			case '8':
+				state=2;
+				break;
+			case '9':
+				state=2;
+				break;
+			case 'A':
+				state=2;
+				break;
+			case 'B':
+				state=2;
+				break;
+			case 'C':
+				state=2;
+				break;
+			case 'D':
+				state=2;
+				break;
+			case 'E':
+				state=2;
+				break;
+			case 'F':
+				state=2;
+				break;
+			case 'G':
+				state=2;
+				break;
+			case 'H':
+				state=2;
+				break;
+			case 'I':
+				state=2;
+				break;
+			case 'J':
+				state=2;
+				break;
+			case 'K':
+				state=2;
+				break;
+			case 'L':
+				state=2;
+				break;
+			case 'M':
+				state=2;
+				break;
+			case 'N':
+				state=2;
+				break;
+			case 'O':
+				state=2;
+				break;
+			case 'P':
+				state=2;
+				break;
+			case 'Q':
+				state=2;
+				break;
+			case 'R':
+				state=2;
+				break;
+			case 'S':
+				state=2;
+				break;
+			case 'T':
+				state=2;
+				break;
+			case 'U':
+				state=2;
+				break;
+			case 'V':
+				state=2;
+				break;
+			case 'W':
+				state=2;
+				break;
+			case 'X':
+				state=2;
+				break;
+			case 'Y':
+				state=2;
+				break;
+			case 'Z':
+				state=2;
+				break;
+			case 'a':
+				state=2;
+				break;
+			case 'b':
+				state=2;
+				break;
+			case 'c':
+				state=2;
+				break;
+			case 'd':
+				state=2;
+				break;
+			case 'e':
+				state=2;
+				break;
+			case 'f':
+				state=2;
+				break;
+			case 'g':
+				state=2;
+				break;
+			case 'h':
+				state=2;
+				break;
+			case 'i':
+				state=2;
+				break;
+			case 'j':
+				state=2;
+				break;
+			case 'k':
+				state=2;
+				break;
+			case 'l':
+				state=2;
+				break;
+			case 'm':
+				state=2;
+				break;
+			case 'n':
+				state=2;
+				break;
+			case 'o':
+				state=2;
+				break;
+			case 'p':
+				state=2;
+				break;
+			case 'q':
+				state=2;
+				break;
+			case 'r':
+				state=2;
+				break;
+			case 's':
+				state=2;
+				break;
+			case 't':
+				state=2;
+				break;
+			case 'u':
+				state=2;
+				break;
+			case 'v':
+				state=2;
+				break;
+			case 'w':
+				state=2;
+				break;
+			case 'x':
+				state=2;
+				break;
+			case 'y':
+				state=2;
+				break;
+			case 'z':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F1(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1||state==2)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case '0':
+				state=2;
+				break;
+			case '1':
+				state=2;
+				break;
+			case '2':
+				state=2;
+				break;
+			case '3':
+				state=2;
+				break;
+			case '4':
+				state=2;
+				break;
+			case '5':
+				state=2;
+				break;
+			case '6':
+				state=2;
+				break;
+			case '7':
+				state=2;
+				break;
+			case '8':
+				state=2;
+				break;
+			case '9':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		case 2:
+			switch(trans)
+			{
+			case '0':
+				state=2;
+				break;
+			case '1':
+				state=2;
+				break;
+			case '2':
+				state=2;
+				break;
+			case '3':
+				state=2;
+				break;
+			case '4':
+				state=2;
+				break;
+			case '5':
+				state=2;
+				break;
+			case '6':
+				state=2;
+				break;
+			case '7':
+				state=2;
+				break;
+			case '8':
+				state=2;
+				break;
+			case '9':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F2(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case 'A':
+				state=2;
+				break;
+			case 'B':
+				state=2;
+				break;
+			case 'C':
+				state=2;
+				break;
+			case 'D':
+				state=2;
+				break;
+			case 'E':
+				state=2;
+				break;
+			case 'F':
+				state=2;
+				break;
+			case 'G':
+				state=2;
+				break;
+			case 'H':
+				state=2;
+				break;
+			case 'I':
+				state=2;
+				break;
+			case 'J':
+				state=2;
+				break;
+			case 'K':
+				state=2;
+				break;
+			case 'L':
+				state=2;
+				break;
+			case 'M':
+				state=2;
+				break;
+			case 'N':
+				state=2;
+				break;
+			case 'O':
+				state=2;
+				break;
+			case 'P':
+				state=2;
+				break;
+			case 'Q':
+				state=2;
+				break;
+			case 'R':
+				state=2;
+				break;
+			case 'S':
+				state=2;
+				break;
+			case 'T':
+				state=2;
+				break;
+			case 'U':
+				state=2;
+				break;
+			case 'V':
+				state=2;
+				break;
+			case 'W':
+				state=2;
+				break;
+			case 'X':
+				state=2;
+				break;
+			case 'Y':
+				state=2;
+				break;
+			case 'Z':
+				state=2;
+				break;
+			case 'a':
+				state=2;
+				break;
+			case 'b':
+				state=2;
+				break;
+			case 'c':
+				state=2;
+				break;
+			case 'd':
+				state=2;
+				break;
+			case 'e':
+				state=2;
+				break;
+			case 'f':
+				state=2;
+				break;
+			case 'g':
+				state=2;
+				break;
+			case 'h':
+				state=2;
+				break;
+			case 'i':
+				state=2;
+				break;
+			case 'j':
+				state=2;
+				break;
+			case 'k':
+				state=2;
+				break;
+			case 'l':
+				state=2;
+				break;
+			case 'm':
+				state=2;
+				break;
+			case 'n':
+				state=2;
+				break;
+			case 'o':
+				state=2;
+				break;
+			case 'p':
+				state=2;
+				break;
+			case 'q':
+				state=2;
+				break;
+			case 'r':
+				state=2;
+				break;
+			case 's':
+				state=2;
+				break;
+			case 't':
+				state=2;
+				break;
+			case 'u':
+				state=2;
+				break;
+			case 'v':
+				state=2;
+				break;
+			case 'w':
+				state=2;
+				break;
+			case 'x':
+				state=2;
+				break;
+			case 'y':
+				state=2;
+				break;
+			case 'z':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F3(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case '0':
+				state=2;
+				break;
+			case '1':
+				state=2;
+				break;
+			case '2':
+				state=2;
+				break;
+			case '3':
+				state=2;
+				break;
+			case '4':
+				state=2;
+				break;
+			case '5':
+				state=2;
+				break;
+			case '6':
+				state=2;
+				break;
+			case '7':
+				state=2;
+				break;
+			case '8':
+				state=2;
+				break;
+			case '9':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F4(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case '=':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F5(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case '<':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F6(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1||state==3)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case '<':
+				state=3;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		case 3:
+			switch(trans)
+			{
+			case '=':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F7(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1||state==3)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case '<':
+				state=3;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		case 3:
+			switch(trans)
+			{
+			case '>':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F8(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1||state==3)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case '>':
+				state=3;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		case 3:
+			switch(trans)
+			{
+			case '=':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F9(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case '>':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F10(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case '+':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F11(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case '-':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F12(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case '*':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F13(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case '/':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F14(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case '%':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F15(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1||state==3)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case ':':
+				state=3;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		case 3:
+			switch(trans)
+			{
+			case '=':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+int F16(string &pro,int l,int r)
+{
+	int state=1;
+	int acpos=l;
+	while((state==1)&&l<r)
+	{
+		char trans=pro[l++];
+		switch(state)
+		{
+		case 1:
+			switch(trans)
+			{
+			case ';':
+				state=2;
+				break;
+			default:
+				state=-1;
+				break;
+			}
+			break;
+		default:
+			state=-1;
+			break;
+		}
+
+		if(state==2)
+			acpos=l;
+	}
+	return acpos-1;
+}
+void init()
+{
+	CaseSensitive=false;
+	KWCodeTable["ELSE"]=102;
+	KWCodeTable["END"]=103;
+	KWCodeTable["IF"]=100;
+	KWCodeTable["READ"]=106;
+	KWCodeTable["REPEAT"]=104;
+	KWCodeTable["THEN"]=101;
+	KWCodeTable["UNTIL"]=105;
+	KWCodeTable["WRITE"]=107;
+	KWCodeTable["else"]=102;
+	KWCodeTable["end"]=103;
+	KWCodeTable["if"]=100;
+	KWCodeTable["read"]=106;
+	KWCodeTable["repeat"]=104;
+	KWCodeTable["then"]=101;
+	KWCodeTable["until"]=105;
+	KWCodeTable["write"]=107;
+	regexName[0]="identifier";
+	REXCodeTable[0]=108;
+	regex[0]=F0;
+	expl[0]=true;
+	regexName[1]="number";
+	REXCodeTable[1]=109;
+	regex[1]=F1;
+	expl[1]=true;
+	regexName[2]="LETTER";
+	REXCodeTable[2]=110;
+	regex[2]=F2;
+	expl[2]=true;
+	regexName[3]="DIGIT";
+	REXCodeTable[3]=111;
+	regex[3]=F3;
+	expl[3]=true;
+	regexName[4]="=";
+	REXCodeTable[4]=112;
+	regex[4]=F4;
+	regexName[5]="<";
+	REXCodeTable[5]=113;
+	regex[5]=F5;
+	regexName[6]="<=";
+	REXCodeTable[6]=114;
+	regex[6]=F6;
+	regexName[7]="<>";
+	REXCodeTable[7]=115;
+	regex[7]=F7;
+	regexName[8]=">=";
+	REXCodeTable[8]=116;
+	regex[8]=F8;
+	regexName[9]=">";
+	REXCodeTable[9]=117;
+	regex[9]=F9;
+	regexName[10]="+";
+	REXCodeTable[10]=118;
+	regex[10]=F10;
+	regexName[11]="-";
+	REXCodeTable[11]=119;
+	regex[11]=F11;
+	regexName[12]="*";
+	REXCodeTable[12]=120;
+	regex[12]=F12;
+	regexName[13]="/";
+	REXCodeTable[13]=121;
+	regex[13]=F13;
+	regexName[14]="%";
+	REXCodeTable[14]=122;
+	regex[14]=F14;
+	regexName[15]=":=";
+	REXCodeTable[15]=123;
+	regex[15]=F15;
+	regexName[16]=";";
+	REXCodeTable[16]=124;
+	regex[16]=F16;
+	lcomment[0]=LC0;
+	rcomment[0]=RC0;
+}
+void print()
+{
+	cout<<"Encoding Table[\n";
+	for(auto i:KWCodeTable)
+	{
+		if(!CaseSensitive&&(i.first[0]>='A'&&i.first[0]<='Z'))
+			continue;
+		cout<<"    "<<i.first<<" "<<i.second<<"\n";
+	}
+	for(int j=0;j<NumOfRegex;j++)
+	{
+		cout<<"    "<<regexName[j]<<" "<<REXCodeTable[j];
+		if(expl[j])
+			cout<<"*";
+		cout<<"\n";
+	}
+	cout<<"]\n";
+}
+int main()
+{
+	init();
+	print();
+	string pro="",s;
+	cout<<"Enter your program:\n";
+	while(getline(cin,s))
+	{
+		if(s=="EOF")
+			break;
+		pro+=s+'\n';
+	}
+	int l=0,r=0,len=pro.length();
+	while(l<len)
+	{
+		while(pro[l]==' '||pro[l]=='\n'||pro[l]=='\t') l++;
+		if(l>=len) break;
+		r=l+1;
+		while(r<len&&pro[r]!=' ') r++;
+		int i,maxl=0,pos=-1;
+		for(int ii=0;ii<NumOfComment;ii++)
+		{
+			i=lcomment[ii](pro,l,r);
+			if(i>=l)
+			{
+				pos=ii;
+				l=i+1;
+				break;
+			}
+		}
+		if(pos!=-1)
+		{
+			int po=-1;
+			while(po<l)
+				po=rcomment[pos](pro,l++,len);
+			if(po==-1)
+			{
+				cout<<"ERROR:COMMENT\n";
+				l=len;
+			}
+			else
+				l=po;
+			continue;
+		}
+		for(int j=0;j<NumOfRegex;j++)
+		{
+			i=regex[j](pro,l,r);
+			if(i>=l&&i-l+1>maxl)
+			{
+				maxl=i-l+1;
+				pos=j;
+			}
+		}
+		if(pos!=-1)
+		{
+			string s1=pro.substr(l,maxl);
+			if(KWCodeTable.find(s1)!=KWCodeTable.end())
+			{
+				cout<<to_string(KWCodeTable[s1])<<" ";
+				l+=maxl;
+			}
+			else
+			{
+				cout<<to_string(REXCodeTable[pos])<<" ";
+				if(expl[pos])
+					cout<<s1<<" ";
+				l+=maxl;
+			}
+		}
+		else
+		{
+			if(pos=-1)
+			{
+				string s1=pro.substr(l,r-l);
+				if(KWCodeTable.find(s1)!=KWCodeTable.end())
+				{
+					cout<<to_string(KWCodeTable[s1])<<" ";
+					l=r;
+				}
+				else
+				{
+					cout<<"ERROR:"<<pro.substr(l,r-l)<<" ";
+					l=r;
+				}
+			}
+		}
+	}
+	return 0;
+}
