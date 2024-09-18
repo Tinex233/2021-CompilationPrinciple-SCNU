@@ -2,7 +2,7 @@
  * Copyright 2024 Li WenJie. All Rights Reserved.
  * File: lexanalyzer.cpp
  * Version: 1.0
- * Author: Li WenJie
+ * Author: Tinex
  * Date: May 15, 2024
  * Description: The file contains the implementation of methods for the NFAGraph, DFAGraph, and LexAnalyzer classes.
 */
