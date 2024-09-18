@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Li WenJie. All Rights Reserved.
+ * Copyright 2024 Tinex. All Rights Reserved.
  * File: lexanayzer.h
  * Version: 1.0
  * Author: Tinex
