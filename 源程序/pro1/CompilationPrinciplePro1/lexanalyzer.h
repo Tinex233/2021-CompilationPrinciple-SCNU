@@ -2,7 +2,7 @@
  * Copyright 2024 Li WenJie. All Rights Reserved.
  * File: lexanayzer.h
  * Version: 1.0
- * Author: Li WenJie
+ * Author: Tinex
  * Date: May 15, 2024
  * Description: The file contains the definitions of the NFAGraph, DFAGraph, and LexAnalyzer classes,
  *              with deliberate effort to avoid coupling with QT methods and structures in the implementation,
