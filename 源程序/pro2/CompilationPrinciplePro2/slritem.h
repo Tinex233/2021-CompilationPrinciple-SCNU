@@ -1,14 +1,14 @@
 /*
- * Copyright 2024 Li WenJie. All Rights Reserved.
+ * Copyright 2024 Tinex. All Rights Reserved.
  * File: slritem.h
  * Version: 1.1
- * Modifier: Li WenJie
+ * Modifier: Tinex
  * Author: Huang Shuojia
  * Date: May 20, 2024
  * Description: Definition of syntax analyzer class slrItem, structure item of analysis items, and syntax tree node are included.
  * Version History:
  * 1.0 - 2020-12-24 - Huang Shuojia: Initial version.
- * 1.1 - 2024-05-20 - Li WenJie: Modify some code structure,
+ * 1.1 - 2024-05-20 - Tinex: Modify some code structure,
  *                               fix some program bugs, update UI interface,
  *                               and add functionality to read encoding and build syntax tree.
 */
