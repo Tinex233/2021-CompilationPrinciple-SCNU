@@ -2,7 +2,7 @@
  * Copyright 2024 Li WenJie. All Rights Reserved.
  * File: mainwindow.h
  * Version: 1.0
- * Author: Li WenJie
+ * Author: Tinex
  * Date: May 15, 2024
  * Description: Contains the MainWindow class of QT, which includes the definitions of methods for various window controls.
 */
