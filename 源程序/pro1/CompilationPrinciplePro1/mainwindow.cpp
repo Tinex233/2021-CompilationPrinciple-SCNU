@@ -2,7 +2,7 @@
  * Copyright 2024 Li WenJie. All Rights Reserved.
  * File: mainwindow.cpp
  * Version: 1.0
- * Author: Li WenJie
+ * Author: Tinex
  * Date: May 15, 2024
  * Description: In the methods of various controls of the window object,
  *              the functionality of obtaining input information,
