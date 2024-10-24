@@ -1,6 +1,6 @@
 # 2021-CompilationPrinciple-SCNU
 ## SCNU编译原理大作业
-
+CSDN网址：https://blog.csdn.net/weixin_60344133/article/details/142209214?spm=1001.2014.3001.5501
 # 文件夹内容说明
 
 1）测试数据		包含用于测试的两种语言的数据，以及一些产生的文本形式的分析结果。
