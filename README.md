@@ -13,7 +13,7 @@ CSDN网址：https://blog.csdn.net/weixin_60344133/article/details/142209214?spm
 
 若想要了解程序的使用方法，请查看“测试数据”中的使用说明文件。
 
-# Requirement:
+# Requirements:
 
 Windows
 
